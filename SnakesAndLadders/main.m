@@ -30,8 +30,8 @@ int main(int argc, const char * argv[]) {
                 [inputString isEqualToString:@"r"])
             {
                 [player1 roll];
-                NSLog(@"You rolled a %d", 1);
-                NSLog(@"You landed on %lu", player1.currentSquare);
+                
+                NSLog(@"%@", player1.output);
             }
             
         }

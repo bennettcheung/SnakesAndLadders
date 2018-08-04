@@ -10,6 +10,8 @@
 
 @interface Player : NSObject
 @property (nonatomic, assign) NSInteger currentSquare;
+@property (nonatomic, strong) NSMutableString *output;
+@property (nonatomic, assign) BOOL gameOver;
 
 -(void)roll;
 @end
