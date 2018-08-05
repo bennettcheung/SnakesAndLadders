@@ -15,6 +15,8 @@
     self = [super init];
     if (self) {
         _players = [[NSMutableArray alloc]init];
+        _currentIndex = 0;
+        _gameOver = NO;
     }
     return self;
 }
@@ -27,5 +29,24 @@
         [self.players addObject:player];
     }
     
+}
+
+-(Player *)currentPlayer
+{
+    return [self.players objectAtIndex:self.currentIndex];
+}
+
+-(void)roll{
+    if (!self.gameOver)
+    {
+        [[self currentPlayer]roll];
+        self.currentIndex = (self.currentIndex + 1) % [self.players count];
+
+    }
+}
+
+-(NSString *)output{
+    Player *player = [self currentPlayer];
+    return player.output;
 }
 @end

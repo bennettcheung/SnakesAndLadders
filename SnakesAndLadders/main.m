@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Player.h"
 #import "PlayerManager.h"
 
 int main(int argc, const char * argv[]) {
@@ -45,13 +44,16 @@ int main(int argc, const char * argv[]) {
                     if ([inputString isEqualToString:@"roll"] ||
                         [inputString isEqualToString:@"r"])
                     {
-                        //                [player1 roll];
-                        
-                        //                NSLog(@"%@", player1.output);
+                        [manager roll];
+        
+                        NSLog(@"%@", [manager output]);
                     }
                     
-                    //if player gameOver
-                    //manager reset players
+                    if (manager.gameOver)
+                    {
+                        [manager.players removeAllObjects];
+                        break;
+                    }
                 }//while
               
             }//if

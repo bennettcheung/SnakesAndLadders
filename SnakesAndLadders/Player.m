@@ -45,7 +45,7 @@
 
 -(void)roll{
     int randomNumber = arc4random_uniform(6) + 1;
-    self.output = [NSMutableString stringWithFormat:@"You rolled a %i \n", randomNumber];
+    self.output = [NSMutableString stringWithFormat:@"%@ rolled a %i \n", self.name, randomNumber];
     
     self.currentSquare += randomNumber;
     
