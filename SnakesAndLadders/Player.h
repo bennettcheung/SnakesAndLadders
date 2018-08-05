@@ -15,4 +15,5 @@
 @property (nonatomic, assign) BOOL gameOver;
 
 -(void)roll;
+-(NSString*)score;
 @end

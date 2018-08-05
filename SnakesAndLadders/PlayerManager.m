@@ -55,4 +55,14 @@
     Player *player = [self currentPlayer];
     return player.output;
 }
+
+-(NSString *)score{
+    NSMutableString *output= [@"score: " mutableCopy];
+    for (int i = 0; i < [self.players count]; i++){
+        //create new player and add to array
+        Player *player = [self.players objectAtIndex:i];
+        [output appendFormat:@"%@,", [player score]];
+    }
+    return output;
+}
 @end

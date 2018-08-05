@@ -47,6 +47,11 @@ int main(int argc, const char * argv[]) {
                         [manager roll];
         
                         NSLog(@"%@", [manager output]);
+                        NSLog(@"%@", [manager score]);
+                    }
+                    else if ([inputString isEqualToString:@"quit"] )
+                    {
+                        break;
                     }
                     
                     if (manager.gameOver)
@@ -61,7 +66,7 @@ int main(int argc, const char * argv[]) {
                 NSLog(@"Please input a numeric value for number of players!");
             }
         }//while
-        
+        NSLog(@"Thanks for playing the game");
         
 
     }

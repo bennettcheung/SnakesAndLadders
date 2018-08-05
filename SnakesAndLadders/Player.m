@@ -66,12 +66,18 @@
     
     if (self.currentSquare >= 100)
     {
+        self.currentSquare = 100;
         self.gameOver = YES;
         [self.output appendString: @"You won!! Congradulations!"];
     }
     else{
         [self.output appendFormat:@"You landed on %lu\n", self.currentSquare];
     }
+    
+}
+
+-(NSString *)score{
+    return [NSString stringWithFormat:@"%@: %ld", self.name, self.currentSquare];
     
 }
 @end
