@@ -37,6 +37,7 @@
                      
                    };
         _output = [[NSMutableString alloc]init];
+        _name = @"";
         
     }
     return self;
