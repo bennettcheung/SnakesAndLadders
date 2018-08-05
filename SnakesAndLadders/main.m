@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PlayerManager.h"
+#import "InputHandler.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -17,15 +18,12 @@ int main(int argc, const char * argv[]) {
         
         PlayerManager *manager = [[PlayerManager alloc]init];
         
-        char input[255];
+        InputHandler *inputHandler = [[InputHandler alloc]init];
         
         while ([manager.players count] == 0)
         {
-            NSLog(@"Please enter the number of players: ");
             
-            fgets(input, 255, stdin);
-            
-            NSString *inputString = [[NSString alloc]initWithUTF8String:input];
+            NSString* inputString = [inputHandler getInput:@"Please enter the number of players: "];
             
             if ([inputString intValue])
             {
@@ -35,11 +33,8 @@ int main(int argc, const char * argv[]) {
                 
                 while (YES)
                 {
-                    fgets(input, 255, stdin);
                     
-                    inputString = [[NSString alloc]initWithUTF8String:input];
-                    inputString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                    
+                    inputString = [inputHandler getInput:@""];
                     
                     if ([inputString isEqualToString:@"roll"] ||
                         [inputString isEqualToString:@"r"])
@@ -51,9 +46,15 @@ int main(int argc, const char * argv[]) {
                     }
                     else if ([inputString isEqualToString:@"quit"] )
                     {
-                        break;
+                        inputString = [inputHandler getInput:@"Do you want to restart or quit?"];
+                        
+                        if ([inputString isEqualToString:@"restart"] )
+                            manager.gameOver = YES;
+                        else
+                            break;
                     }
                     
+                    //reset the game if the manager says the game is over
                     if (manager.gameOver)
                     {
                         [manager resetPlayers];
