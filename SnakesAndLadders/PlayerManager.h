@@ -16,6 +16,7 @@
 @property (nonatomic, assign) BOOL gameOver;
 
 -(void)createPlayers:(int)numberOfPlayers;
+-(void)resetPlayers;
 -(Player*)currentPlayer;
 -(void)roll;
 -(NSString *)output;

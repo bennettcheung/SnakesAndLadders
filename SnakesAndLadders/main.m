@@ -51,7 +51,7 @@ int main(int argc, const char * argv[]) {
                     
                     if (manager.gameOver)
                     {
-                        [manager.players removeAllObjects];
+                        [manager resetPlayers];
                         break;
                     }
                 }//while

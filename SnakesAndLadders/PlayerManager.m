@@ -15,7 +15,7 @@
     self = [super init];
     if (self) {
         _players = [[NSMutableArray alloc]init];
-        _currentIndex = 0;
+        _currentIndex = -1;
         _gameOver = NO;
     }
     return self;
@@ -28,7 +28,12 @@
         player.name = [NSString stringWithFormat:@"Player %i", i];
         [self.players addObject:player];
     }
-    
+    self.gameOver = NO;
+}
+
+-(void)resetPlayers{
+    [self.players removeAllObjects];
+    self.currentIndex = -1;
 }
 
 -(Player *)currentPlayer
@@ -39,9 +44,10 @@
 -(void)roll{
     if (!self.gameOver)
     {
-        [[self currentPlayer]roll];
         self.currentIndex = (self.currentIndex + 1) % [self.players count];
-
+        Player *player = [self currentPlayer];
+        [player roll];
+        self.gameOver = player.gameOver;
     }
 }
 
